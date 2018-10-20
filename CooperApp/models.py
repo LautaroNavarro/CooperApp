@@ -5,22 +5,22 @@ from django.db import models
 
 class Agency():
 
-    types = {"1": "Government",
-             "2": "Multinational",
-             "3": "Commercial",
-             "4": "Educational",
-             "5": "Private",
-             "6": "Unknown", }
+    types = ["Government",
+             "Multinational",
+             "Commercial",
+             "Educational",
+             "Private",
+             "Unknown", ]
 
     def __init__(self,
                  name,
                  abbrev,
                  countr_code,
-                 type, ):
-        self.name
-        self.abbrev
-        self.countr_code
-        self.type
+                 type_type, ):
+        self.name = name
+        self.abbrev = abbrev
+        self.countr_code = countr_code
+        self.type = type_type
 
 
 class Rocket():
@@ -28,41 +28,40 @@ class Rocket():
                  name,
                  configuration,
                  family_name,
-                 Agency,
+                 agency,
                  image,):
-        self.name
-        self.configuration
-        self.family_name
-        self.Agency
-        self.image
+        self.name = name
+        self.configuration = configuration
+        self.family_name = family_name
+        self.agency = agency
+        self.image = image 
 
 
 class Mission():
     def __init__(self,
                  name,
                  description,
-                 type,
+                 tipe,
                  type_name,
                  payload,
                  agency, ):
-        self.name
-        self.description
-        self.agency
-        self.type
-        self.type_name
-        self.payload
+        self.name = name
+        self.description = description
+        self.agency = agency
+        self.type = tipe
+        self.type_name = type_name
+        self.payload = payload
 
 
 class RocketLaunch():
-
-    status_types = {"1": "Green",
-                    "2": "Red",
-                    "3": "Success",
-                    "4": "Failed", }
+    status_types = ["Green",
+                    "Red",
+                    "Success",
+                    "Failed", ]
 
     def __init__(self,
                  id_api,
-                 agency,
+                 agencies,
                  mission,
                  rocket,
                  date_start,
@@ -70,11 +69,12 @@ class RocketLaunch():
                  location_name,
                  location_map,
                  status, ):
-        self.id_api
-        self.mission
-        self.rocket
-        self.date_start
-        self.date_end
-        self.location_name
-        self.location_map
-        self.status
+        self.id_api = id_api
+        self.agencies = agencies
+        self.mission = mission
+        self.rocket = rocket
+        self.date_start = date_start
+        self.date_end = date_end
+        self.location_name = location_name
+        self.location_map = location_map
+        self.status = status
