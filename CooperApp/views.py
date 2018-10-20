@@ -4,11 +4,6 @@ from django.views.generic.base import TemplateView
 from CooperApp.utils import get_api_launches
 # Create your views here.
 
-
-def index(request):
-    return HttpResponse("hola")
-
-
 class Index(TemplateView):
     template_name = 'home.html'
 
