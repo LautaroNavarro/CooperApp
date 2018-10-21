@@ -1,8 +1,6 @@
 import requests
 import json
 from CooperApp.models import *
-
-
 def get_api_launches(start_date, end_date):
     """
     this functions need the dates format in Y-M-D
@@ -46,18 +44,23 @@ def get_api_launches(start_date, end_date):
                 "agency",
             )
             missions.append(mission_obj)
-
         status = RocketLaunch.status_types[response["launches"][i]["status"] - 1]
+        try:
+            loc_name = response["launches"][i]["location"]["pads"][0]["name"],
+            loc_map = response["launches"][i]["location"]["pads"][0]["mapURL"],
+        except Exception as e:
+            loc_name = None
+            loc_map = None
         rocket_launch = RocketLaunch(
-        	response["launches"][i]["id"],
-        	agencies,
-        	missions,
-        	rocket,
-        	response["launches"][i]["windowstart"],
-        	response["launches"][i]["windowend"],
-        	response["launches"][i]["location"]["pads"][0]["name"],
-        	response["launches"][i]["location"]["pads"][0]["mapURL"],
-        	status,
-        	)
+            response["launches"][i]["id"],
+            agencies,
+            missions,
+            rocket,
+            response["launches"][i]["windowstart"],
+            response["launches"][i]["windowend"],
+            loc_name,
+            loc_map,
+            status,
+            )
         rocket_launchs.append(rocket_launch)
-    return rocket_launchs
+    return rocket_launchs 
