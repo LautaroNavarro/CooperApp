@@ -1,3 +1,21 @@
 #logo{
 	background-image: "../css/images/rocket.png";
 }
+nav{
+	background-color:#2F294F;
+}
+footer{
+	background-color:#2F294F;
+	padding-bottom: 3vh;
+	padding-top: 3vh;
+	color:white;
+}
+
+footer a {
+	color: rgb(1 ,161 ,165)
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}

@@ -1,8 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from CooperApp.utils import get_api_launches
 # Create your views here.
+
+
+def LandingPage(request):
+    return render(request, 'landing.html')
+
 
 class Index(TemplateView):
     template_name = 'home.html'

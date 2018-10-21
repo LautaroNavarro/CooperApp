@@ -1,0 +1,33 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #2f294f;
+  margin: 0;
+}
+
+#note {
+  position: absolute;
+  color: rgba(249,241,204,1);
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  margin: auto;
+  text-align: center;
+  user-select: none;
+  font-size: 50px;
+  font-family: Raleway;
+}
+#note_two {
+  position: absolute;
+  color: rgba(249,241,204,1);
+  left: 0;
+  right: 0;
+  bottom: 40%;
+  margin: auto;
+  text-align: center;
+  text-decoration: none;
+  font-size: 30px;
+  font-family: Raleway;
+}
