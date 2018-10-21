@@ -2,6 +2,36 @@
 {% block content%}
 {% load static %}
 <div class="container">
+<div class="row mt-5 align-items-center text-center">
+  <div class="col-12">
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Search by date
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <form class="form form-control" method="GET">
+    <div class="row">
+      <div class="col-6">
+        <input type="date" name="start_date" class="form-control">
+      </div>
+      <div class="col-6">
+        <input type="date" name="end_date" class="form-control">
+      </div>
+    </div>
+    <div class="row mt-2">
+      <div class="col-12">
+        <input type="submit" class="btn btn-success-light">
+      </div>
+    </div>
+    
+  </form>
+</div>
+  </div>
+</div>
+
+
+
   {% for launche in api_launches %}
   <div class="card-body">
     <div class="row">
@@ -34,5 +64,27 @@
     </div>
   </div>
   {% endfor %}
+
+<div class="row text-center mb-5">
+  <div class="col-12">
+    <form class="form form-control" method="POST" action="/save_news/">
+      {% csrf_token %}
+      <h1>Sign up for our newsPaper</h1>
+      <div class="row text-center align-items-center">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <input type="email" name="email" class="form-control">
+      </div>
+      </div>
+      <input type="submit" class="btn btn-outline-dark mt-2">
+    </form>
+  </div>
 </div>
+
+</div>
+
+
+
 {% endblock %}
+
+

@@ -3,6 +3,7 @@ from CooperApp.models import NewsLetterSubscribed
 from CooperApp.utils import get_api_launches
 from CommandApp.utils import list_of_launches_this_week
 from CooperApp.models import NewsLetterSubscribed
+from datetime import datetime, timedelta
 
 
 class Command(BaseCommand):
@@ -13,7 +14,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         try:
-            launches = get_api_launches("", "")
+            start_date = datetime.now().strftime("%Y-%m-%d")
+            end_date = (datetime.now() + timedelta(days=7)
+                        ).strftime("%Y-%m-%d")
+            launches = get_api_launches(start_date, end_date)
             launches_this_week = list_of_launches_this_week(launches)
             if launches_this_week:
                 message = ("Hi! We have <strong>Great newses</strong> for you!<br>" +
@@ -37,7 +41,9 @@ class Command(BaseCommand):
                     else:
                         message += "<p>Location: Unknown</p>"
                     if launch.location_map[0]:
-                        message += "<a href=" + launch.location_map[0] + ">View location in map</a>"
+                        message += "<a href=" + \
+                            launch.location_map[0] + \
+                            ">View location in map</a>"
                     else:
                         message += "<p>Location: Unknown</p>"
                     message += "</ul><br><hr>"
