@@ -129,9 +129,9 @@ DB_FROM_ENV = dj_database_url.config(conn_max_age=500)
 
 DATABASES['default'].update(DB_FROM_ENV)
 
-STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
