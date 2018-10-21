@@ -15,6 +15,7 @@ class NewsLetterSubscribed(models.Model):
             message,
             os.environ.get('EMAIL_HOST_USER'),
             list_emails,
+            html_message=message,
             fail_silently=False,
         )
 

@@ -1,10 +1,16 @@
 import requests
 import json
 from CooperApp.models import *
+from datetime import datetime, timedelta
+
+
 def get_api_launches(start_date, end_date):
     """
     this functions need the dates format in Y-M-D
     """
+    if not (start_date or end_date):
+        start_date = datetime.now().strftime("%Y-%m-%d")
+        end_date = (datetime.now() + timedelta(days=7)).strftime("%Y-%m-%d")
     response = requests.get(
         'https://launchlibrary.net/1.4/launch/{}/{}'.format(start_date, end_date)).json()
     rocket_launchs = []
