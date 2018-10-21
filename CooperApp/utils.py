@@ -1,5 +1,6 @@
 import requests
 import json
+from dateutil import parser
 from CooperApp.models import *
 def get_api_launches(start_date, end_date):
     """
@@ -46,8 +47,10 @@ def get_api_launches(start_date, end_date):
             missions.append(mission_obj)
         status = RocketLaunch.status_types[response["launches"][i]["status"] - 1]
         try:
-            loc_name = response["launches"][i]["location"]["pads"][0]["name"],
-            loc_map = response["launches"][i]["location"]["pads"][0]["mapURL"],
+            loc_name = response["launches"][i]["location"]["pads"][0]["name"]
+            loc_map = response["launches"][i]["location"]["pads"][0]["mapURL"]
+            start = parser.parse(response["launches"][i]["windowstart"])
+            end = parser.parse(response["launches"][i]["windowend"])
         except Exception as e:
             loc_name = None
             loc_map = None
@@ -56,8 +59,8 @@ def get_api_launches(start_date, end_date):
             agencies,
             missions,
             rocket,
-            response["launches"][i]["windowstart"],
-            response["launches"][i]["windowend"],
+            start,
+            end,
             loc_name,
             loc_map,
             status,

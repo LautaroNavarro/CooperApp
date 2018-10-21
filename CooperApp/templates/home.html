@@ -25,7 +25,7 @@
         <p class="tzero">
         </p><div class="text-muted">
           <p><span ng-if="sn(n)" class="ng-binding ng-scope"></span></p>
-          <span ng-if="sfw(n)" class="ng-binding ng-scope">{{ launche.date_start }} - {{ launche.date_end }}</span>
+          <span ng-if="sfw(n)" class="ng-binding ng-scope">{{ launche.date_start | date:"M d, Y G:i" }} UTC - {{ launche.date_end | date:"M d, Y G:i" }} UTC</span>
           <p class="ng-binding">{{ launche.location_name }}</p>
         </div>
         {% for mission in launche.mission %}
