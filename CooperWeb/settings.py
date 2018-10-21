@@ -26,7 +26,7 @@ SECRET_KEY = 'gy-epyt6_xz=gf#c7iu)pw_qd*p&507^v7m5t0ff79%mhdb@it'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cooperappnasa.herokuapp.com']
 
 
 # Application definition
