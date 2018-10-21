@@ -5,32 +5,31 @@
   {% for launche in api_launches %}
   <div class="card-body">
     <div class="row">
-      <div class="col-md-7 text-center item-align-center">
+      <div class="col-md-6 text-center item-align-center">
         <a href="#">
           {% if launche.rocket.image != 'https://s3.amazonaws.com/launchlibrary/RocketImages/placeholder_1920.png' %}
-            <img class="card-img img-fluid rounded mb-3 mb-md-0 image" alt="Responsive image" src="{{ launche.rocket.image }}">
+            <img class="card-img-top img-fluid rounded mb-3 mb-md-0 " alt="Responsive image" src="{{ launche.rocket.image }}">            
           {% else %}
               <img class="card-img img-fluid rounded mb-3 mb-md-0 emptyrocket" alt="Responsive image" src="{% static 'images/not_rocket_image.png' %}">
           {% endif %}
         </a>
       </div>
-      <div class="col-md-5">
-        {% if launche.rocket.agency != 'Unknown' %}
-          {% for agency in launche.rocket.agency %}
-            <h3 class="ng-binding">{{ launche.rocket.name }} | {{ agency.name }}</h3> 
-          {% endfor %}
-        {% else %} 
-            <h3 class="ng-binding">{{ launche.rocket.name }}</h3>
-        {% endif %}
-        <p class="tzero">
-        </p><div class="text-muted">
-          <p><span ng-if="sn(n)" class="ng-binding ng-scope"></span></p>
-          <span ng-if="sfw(n)" class="ng-binding ng-scope">{{ launche.date_start }} - {{ launche.date_end }}</span>
-          <p class="ng-binding">{{ launche.location_name }}</p>
-        </div>
-        {% for mission in launche.mission %}
-          <p ng-if="n.desc" class="ng-binding ng-scope">{{ mission.description }}</p>
-        {% endfor %}
+          <div class="col-md-5">
+              {% if launche.rocket.agency != 'Unknown' %}
+                {% for agency in launche.rocket.agency %}
+                  <h3 class="ng-binding">{{ launche.rocket.name }} | {{ agency.name }}</h3> 
+                {% endfor %}
+              {% else %} 
+                  <h3 class="ng-binding">{{ launche.rocket.name }}</h3>
+              {% endif %}
+              <div class="text-muted">
+                <span ng-if="sn(n)" class="ng-binding ng-scope"></span></p>
+                <span ng-if="sfw(n)" class="ng-binding ng-scope">{{ launche.date_start }} - {{ launche.date_end }}</span>
+                <p class="ng-binding">{{ launche.location_name }}</p>
+              </div>
+              <div>
+                  <a type="button" class="btn btn-dark" href ="{{ launche.location_map }}">View in Map</a>              
+              </div>
       </div>
     </div>
   </div>
