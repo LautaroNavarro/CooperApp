@@ -1,6 +1,22 @@
 from django.db import models
+from django.core.mail import send_mail
+import os
 
 # Create your models here.
+
+
+class NewsLetterSubscribed(models.Model):
+    email = models.CharField(max_length=255)
+
+    def send_email(subject, message):
+        list_emails = NewsLetterSubscribed.objects.all().values_list("email", flat=True)
+        send_mail(
+            subject,
+            message,
+            os.environ.get('EMAIL_HOST_USER'),
+            list_emails,
+            fail_silently=False,
+        )
 
 
 class Agency():
@@ -34,7 +50,7 @@ class Rocket():
         self.configuration = configuration
         self.family_name = family_name
         self.agency = agency
-        self.image = image 
+        self.image = image
 
 
 class Mission():
